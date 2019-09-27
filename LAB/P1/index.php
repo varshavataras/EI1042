@@ -1,0 +1,1 @@
+<?php header("Location: ./includes/portal.php?action=home"); ?>
