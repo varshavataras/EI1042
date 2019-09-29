@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__)."/../../../../wp-config.php");
+include(dirname(__FILE__)."/../../../wp-config.php");
 
 $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);  
 function insertar($pdo,$table,$valor) {
