@@ -8,7 +8,14 @@
 <main>
 	<h1>GestiÓn de Usuarios </h1>
 	<form class="fom_usuario" action="?action=registrar" method="POST">
-
+		<?php 
+		$userName="";
+		$userSurname="";
+		$email="";
+		$dni="";
+		$passwd="";
+		$photo="";
+		?>
 		<legend>Datos básicos</legend>
 		<label for="nombre">Nombre</label>
 		<br/>

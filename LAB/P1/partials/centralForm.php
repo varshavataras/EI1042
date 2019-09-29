@@ -1,6 +1,10 @@
 <main>
 	<h1>Gestion de Usuarios </h1>
 	<form class="fom_usuario" action="?action=controlForm" method="POST">
+		<?php 
+		$nombre="";
+		$apellido="";
+		?>
 		<fieldset>
 			<legend>Datos básicos</legend>
 			<label for="nombre">Nombre</label>
