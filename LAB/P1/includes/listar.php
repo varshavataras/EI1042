@@ -16,6 +16,9 @@ function handler($pdo,$table)
             foreach ($row as $key => $val) {
                 echo "<td>", $val, "</td>";
             }
+            $cliente = $row["client_id"];
+            echo "<td>", "<a href=?action=update&client_id=$cliente>Actualizar</a>", "</td>";
+            echo "<td>", "<a href=?action=delete&client_id=$cliente>Borrar</a>", "</td>";
             print "</tr>";
         }
         print "</table>";

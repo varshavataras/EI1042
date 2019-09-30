@@ -12,11 +12,7 @@ include("./gestionBD.php");
 function handler($pdo,$table)
 {
     $datos = $_REQUEST;
-    if (count($_REQUEST) < 12) {
-        $data["error"] = "No has rellenado el formulario correctamente";
-        return;
-    }
-    $query = "DELETE   FROM   $table WHERE client_id =(?)";
+    $query = "DELETE   FROM   $table WHERE client_id = ?";
                        
     echo $query;
     try { 
@@ -25,6 +21,9 @@ function handler($pdo,$table)
         $consult = $pdo->prepare($query);
         $a=$consult->execute(array($_REQUEST['client_id']));
         if (1>$a)echo "InCorrecto";
+    else{
+        echo "CORRECTO";
+    }
     
     } catch (PDOExeption $e) {
         echo ($e->getMessage());
@@ -32,6 +31,5 @@ function handler($pdo,$table)
 }
 
 $table = "A_cliente";
-var_dump($_POST);
 handler( $pdo,$table);
 ?>

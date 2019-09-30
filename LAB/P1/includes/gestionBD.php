@@ -1,7 +1,8 @@
 <?php
-include(dirname(__FILE__)."/../../../../wp-config.php");
+include(dirname(__FILE__)."/../../../wp-config.php");
 
-$pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);  
+$pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+
 function insertar($pdo,$table,$valor) {
     $query = "INSERT INTO    $table (nombre) VALUES (?)";
     $consult = $pdo->prepare($query);
@@ -9,6 +10,7 @@ function insertar($pdo,$table,$valor) {
     if (1>$a)echo "InCorrecto";
                      
 }
+
 function borrar($pdo,$table,$valor) {
     $query = "DELETE   FROM   $table WHERE client_id =(?)";
     $consult = $pdo->prepare($query);
@@ -25,6 +27,15 @@ function consultar($pdo,$table) {
     return ($consult->fetchAll(PDO::FETCH_ASSOC)); 
   
 }
+
+function consultarId($pdo,$table,$client_id) {
+    $query = "SELECT * FROM  $table WHERE client_id=$client_id"; 
+    $consult = $pdo->prepare($query);
+    $a=$consult->execute(array());
+    if (1>$a)echo "InCorrecto3";
+    return ($consult->fetchAll(PDO::FETCH_ASSOC));  
+}
+
 
 function creatablaUsuarios($pdo,$table){
 /*CREATE TABLE cliente(
