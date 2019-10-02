@@ -19,7 +19,7 @@
 
         <?php
 
-        include("C:\wamp64\www\wp\EI1042\LAB\P1\includes\gestionBD.php");
+        include("./gestionBD.php");
         
         
         $table = "A_cliente";
