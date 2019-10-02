@@ -1,4 +1,18 @@
 <?php
+
+
+/**
+ * * Descripción: Definición de Bases de Datos
+ * *
+ * * Descripción extensa: Iremos añadiendo cosas complejas en PHP.
+ * *
+ * * @author  Taras <al361933@uji.es> <fulanito@example.com>
+ * * @copyright 2019 Taras
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+
+ * */
+
 include(dirname(__FILE__)."/../../../wp-config.php");
 $pdo = new PDO("mysql:host=" . DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
 function insertar($pdo,$table,$valor) {

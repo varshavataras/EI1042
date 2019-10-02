@@ -1,12 +1,18 @@
 <?php
 include("./gestionBD.php");
 
+
 /**
-* Descripción: Insercion de usuarios en base de datos a traves de datos obtenidos por formulario
-*@title: Formulario de insercion de usuarios
-* @author Ivan <al362851@uji.es> * @copyright 2019 Ivan
-* @license CC-BY-NC-SA
-*/
+ * * Descripción: Actualizar datos de usuario
+ * *
+ * * Descripción extensa: Iremos añadiendo cosas complejas en PHP.
+ * *
+ * * @author  Taras <al361933@uji.es> <fulanito@example.com>
+ * * @copyright 2019 Taras
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+
+ * */
 
 
 function handler($pdo,$table)

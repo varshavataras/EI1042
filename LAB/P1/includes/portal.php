@@ -6,8 +6,8 @@
  * *
  * * Descripción extensa: Iremos añadiendo cosas complejas en PHP.
  * *
- * * @author  Lola <dllido@uji.es> <fulanito@example.com>
- * * @copyright 2018 Lola
+ * * @author  Taras <al361933@uji.es> <fulanito@example.com>
+ * * @copyright 2019 Taras
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
 
@@ -40,6 +40,7 @@ switch ($action) {
     case "listar":
         $central = "/listar.php";
         break;
+        
 	case "borrar":
 		$central = "/../partials/deleteForm.php";
         break;
