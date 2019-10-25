@@ -1,0 +1,190 @@
+/*
+ Theme Name:   Twenty Seventeen Child
+ Theme URI:    http://example.com/twenty-seventeen-child/
+ Description:  Twenty Seventeen Child Theme
+ Author:       John Doe
+ Author URI:   http://example.com
+ Template:     twentyseventeen
+ Version:      1.0.2
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+ Text Domain:  twenty-seventeen-child
+ */
+
+/* =Aquí empieza la personalización de tu tema
+ -------------------------------------------------------------- */
+
+@import url("../twentyseventeen/style.css");
+.widget_rss span.rss-date {
+   color: red;
+ }
+
+
+.advertencia {
+	font-size: small;
+	color: #FF0000
+}
+
+h1,h2,h3 {
+	color:black;
+	font-family: arial black;
+	text-shadow: 0.5px 1px black;
+}
+
+
+A:link    { color: #111111 }
+A:active  { color: red; font-size: 125% }
+A:visited { color: #272727; font-size: 85% }
+
+ul.navbar {
+    padding: 0;
+    margin: 0;
+    top: 2em;
+    left: 1em;
+    width: 9em 
+}
+
+
+ul.navbar li {
+    background: white;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    border-right: 1em solid black }
+
+
+
+div.site-branding-text p.site-description {
+	color: white;
+	opacity: 0.8;
+}
+
+#cola {
+   position: fixed; right: 0px; bottom: 0px;
+   background-color: #eeeeee; color: 	black; padding: 1em;
+   font: bold 2em arial, sans-serif; text-decoration: blink;
+   animation: mymove 5s;
+   animation-iteration-count: 30;
+   animation-direction: alternate;
+ }
+
+
+
+@keyframes mymove {
+     from {bottom: 80%;}
+     to {bottom: 50%;}
+ }
+
+
+
+.footerMotos {
+	display:block;
+    height:500px;
+    background-color:black;
+    padding:0;
+}
+
+.navigation-top {
+	background-color: white;
+	background-image: linear-gradient(90deg, white, grey)
+}
+
+.footer-principal{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+	margin-top: 50px;
+}
+ 
+.footer-principal .footer-left,
+.footer-principal .footer-center,
+.footer-principal .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+ 
+.footer-principal .footer-left{
+	width: 40%;
+}
+ 
+.footer-principal h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+
+ 
+.footer-principal .autores a{
+	display:inline-block;
+	color:  #ffffff;
+	margin: 20px 5px 12px;
+	padding: 0;
+}
+ 
+.footer-principal .footer-empresa{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+ 
+.footer-principal .footer-center{
+	width: 35%;
+	margin: 10px 0 10px;
+}
+
+
+.footer-principal .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:10px 0 10px;
+}
+ 
+.footer-principal .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+ 
+.footer-principal .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;
+}
+ 
+.footer-principal .footer-right{
+	width: 20%;
+}
+ 
+.footer-principal .footer-sobre{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+.footer-principal .footer-sobre span{
+	display: block;
+	color:  #ffffff;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-principal .footer-sobre span a{ 
+	display: block;
+	color:  #5383d3;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+
+}
