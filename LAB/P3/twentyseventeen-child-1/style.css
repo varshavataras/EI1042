@@ -1,6 +1,6 @@
 /*
- Theme Name:   Twenty Seventeen Child
- Theme URI:    http://example.com/twenty-seventeen-child/
+ Theme Name:   Twenty Seventeen Child-1
+ Theme URI:    http://example.com/twenty-seventeen-child-1/
  Description:  Twenty Seventeen Child Theme
  Author:       John Doe
  Author URI:   http://example.com
@@ -9,13 +9,13 @@
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
- Text Domain:  twenty-seventeen-child
+ Text Domain:  twenty-seventeen-child-1
  */
 
 /* =Aquí empieza la personalización de tu tema
  -------------------------------------------------------------- */
 
-@import url("../twentyseventeen-child-1/style.css");
+@import url("../twentyseventeen/style.css");
 .widget_rss span.rss-date {
    color: red;
  }
