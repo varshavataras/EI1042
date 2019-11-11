@@ -30,8 +30,8 @@ include(plugin_dir_path( __FILE__ ).'include/functions.php');
 register_activation_hook( __FILE__, 'UjiMotos_MP_Ejecutar_crearT');
 
 //add_action( 'plugins_loaded', 'Ejecutar_crearT' ); // esto se ejecuta siempre que se llama al plugin
-function MP_Ejecutar_crearT(){
-    MP_CrearT("A_GrupoCliente000");
+function UjiMotos_MP_Ejecutar_crearT(){
+    UjiMotos_MP_CrearT("A_GrupoCliente000");
 }
 //add_action('admin_post_nopriv_my_datos', 'MP_my_datos'); //no autentificados
 add_action('admin_post_my_datos', "UjiMotos_MP_my_datos"); 
