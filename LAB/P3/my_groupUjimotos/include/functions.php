@@ -79,7 +79,7 @@ function UjiMotos_MP_my_datos()
     
     
     
-    if (!(isset($_REQUEST['action_ujimotos'])) or !(isset($_REQUEST['proceso_ujimotos']))) { print("Opciones no correctas $user_email"); exit;}
+    if (!(isset($_REQUEST['action'])) or !(isset($_REQUEST['proceso_ujimotos']))) { print("Opciones no correctas $user_email"); exit;}
 
     get_header();
     echo '<div class="wrap">';
