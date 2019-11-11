@@ -84,7 +84,7 @@ function UjiMotos_MP_my_datos()
     get_header();
     echo '<div class="wrap">';
 
-    switch ($_REQUEST['proceso']) {
+    switch ($_REQUEST['proceso_ujimotos']) {
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
