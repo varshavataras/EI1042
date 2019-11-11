@@ -54,7 +54,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <br/>
         <input type="file" name="foto" value="<?php print $MP_user["foto"] ?>"
          />
-        <br/>
+        <p>
         <input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
     </form>
