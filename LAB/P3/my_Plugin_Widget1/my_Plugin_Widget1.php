@@ -50,12 +50,18 @@ echo $args['after_widget'];
 public function form( $instance ) {
 if ( isset( $instance[ 'title' ] ) ) {
 $title = $instance[ 'title' ];
-$direccion = $instance[ 'direccion' ];
 }
 else {
 $title = __( 'Titulo', 'my_widget_domain' );
-$direccion = __( 'Dirección', 'my_widget_domain' );
+
 }
+	
+if ( isset( $instance[ 'title' ] ) ) {	
+$direccion = $instance[ 'direccion' ];
+}
+else{
+$direccion = __( 'Dirección', 'my_widget_domain' );	
+}	
 // Formulario del backend
  ?>
 <p>
