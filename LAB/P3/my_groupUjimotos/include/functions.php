@@ -87,7 +87,7 @@ function UjiMotos_MP_my_datos()
     switch ($_REQUEST['proceso']) {
         case "registro":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
-            MP_Register_Form($MP_user,$user_email);
+            UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
         case "registrar":
             if (count($_REQUEST) < 3) {
