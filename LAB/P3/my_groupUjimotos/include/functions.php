@@ -85,11 +85,11 @@ function UjiMotos_MP_my_datos()
     echo '<div class="wrap">';
 
     switch ($_REQUEST['proceso']) {
-        case "registro":
+        case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
-        case "registrar":
+        case "registrar_ujimotos":
             if (count($_REQUEST) < 3) {
                 print ("No has rellenado el formulario correctamente");
                 return;
@@ -110,7 +110,7 @@ function UjiMotos_MP_my_datos()
             if (1>$a) {echo "InCorrecto $query";}
             else wp_redirect(admin_url( 'admin-post.php?action=my_datos&proceso=listar'));
             break;
-        case "listar":
+        case "listar_ujimotos":
             //Listado amigos o de todos si se es administrador.
             $a=array();
             if (current_user_can('administrator')) {$query = "SELECT     * FROM       $table ";}
