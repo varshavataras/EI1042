@@ -52,7 +52,7 @@ if ( isset( $instance[ 'title' ] ) ) {
 $title = $instance[ 'title' ];
 }
 else {
-$title = __( 'Titulo', 'my_widget_domain' );
+$title = __( 'Datos de la tienda', 'my_widget_domain' );
 
 }
 	
@@ -65,7 +65,7 @@ $direccion = __( 'Dirección', 'my_widget_domain' );
 // Formulario del backend
  ?>
 <p>
-<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Titulo:' ); ?></label> 
+<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Nombre de la tienda:' ); ?></label> 
 <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 </p>
 <p>
