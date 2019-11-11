@@ -39,7 +39,7 @@ echo $args['before_widget'];
 if ( ! empty( $title ) )
 echo $args['before_title'] . $title . $args['after_title'];
 if ( ! empty( $direccion ) )
-echo $args['before_direccion'] . $direccion . $args['after_direccion'];
+echo $args['before_title'] . $direccion . $args['after_title'];
 
 // Aquí es donde debemos introducir el código que queremos que se ejecute
 echo 'Hola Mundo' ;
