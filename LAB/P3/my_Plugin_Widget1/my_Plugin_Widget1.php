@@ -42,7 +42,6 @@ if ( ! empty( $direccion ) )
 echo $args['before_title'] . $direccion . $args['after_title'];
 
 // Aquí es donde debemos introducir el código que queremos que se ejecute
-echo 'Hola Mundo' ;
 echo $args['after_widget'];
 }
 		
