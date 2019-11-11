@@ -56,7 +56,7 @@ $title = __( 'Titulo', 'my_widget_domain' );
 
 }
 	
-if ( isset( $instance[ 'title' ] ) ) {	
+if ( isset( $instance[ 'direccion' ] ) ) {	
 $direccion = $instance[ 'direccion' ];
 }
 else{
