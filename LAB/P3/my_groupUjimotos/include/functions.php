@@ -134,7 +134,7 @@ function UjiMotos_MP_my_datos()
                     print "<tr>";
                     foreach ($row as $key => $val) {
                         if ($key == 'foto_file'){
-                            echo "<td>", '<img src="'.$val.'" />', "</td>";
+                            echo '<img src="'.$val.'" />';
                         }
                         else{
                             echo "<td>", $val, "</td>";
