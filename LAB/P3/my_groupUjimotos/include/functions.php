@@ -119,8 +119,7 @@ function UjiMotos_MP_my_datos()
                 $a=array( $user_email);
  
             } 
-            $IMAGENES_US = '../fotos/';
-            $photo = $IMAGENES_US.$_POST['userName']."_".$_FILES['foto_file']['name'];
+            
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
