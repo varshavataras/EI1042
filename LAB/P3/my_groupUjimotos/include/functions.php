@@ -50,9 +50,9 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
         placeholder="kiko@ic.es" />
         <br/>
-        <label for="foto">Foto</label>
+        <label for="foto_file">Foto</label>
         <br/>
-        <input type="file" name="foto" value="<?php print $MP_user["foto"] ?>"
+        <input type="file" name="foto_file" value="<?php print $MP_user["foto_file"] ?>"
          />
         <p>
         <input type="submit" value="Enviar">
@@ -103,7 +103,7 @@ function UjiMotos_MP_my_datos()
                 }
             }
             $query = "INSERT INTO $table (nombre, email,foto_file,clienteMail) VALUES (?,?,?,?)";         
-            $a=array($_REQUEST['userName'], $_REQUEST['email'], $_REQUEST['foto'],$_REQUEST['clienteMail'] );
+            $a=array($_REQUEST['userName'], $_REQUEST['email'], $_REQUEST['foto_file'],$_REQUEST['clienteMail'] );
             //$pdo1 = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
