@@ -94,8 +94,8 @@ function UjiMotos_MP_my_datos()
                 print ("No has rellenado el formulario correctamente");
                 return;
             }
-            $fotoURL='httpdocs/img/';
-            $IMAGENES_USUARIOS = '../fotos/';
+            $fotoURL="";
+            $IMAGENES_USUARIOS = '../';
             if(array_key_exists('foto', $_FILES) && $_POST['email']){
                 $fotoURL = $IMAGENES_USUARIOS.$_POST['userName']."_".$_FILES['foto']['name'];
                 if (move_uploaded_file($_FILES['foto']['tmp_name'],$fotoURL)){
