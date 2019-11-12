@@ -96,14 +96,14 @@ function UjiMotos_MP_my_datos()
             }
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
-            if(array_key_exists('foto', $_FILES) && $_POST['email']){
-                $fotoURL = $IMAGENES_USUARIOS.$_POST['userName']."_".$_FILES['foto']['name'];
-                if (move_uploaded_file($_FILES['foto']['tmp_name'],$fotoURL)){
+            if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
+                $fotoURL = $IMAGENES_USUARIOS.$_POST['userName']."_".$_FILES['foto_file']['name'];
+                if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                     echo "foto subida con éxito";
                 }
             }
             $query = "INSERT INTO $table (nombre, email,foto_file,clienteMail) VALUES (?,?,?,?)";         
-            $a=array($_REQUEST['userName'], $_REQUEST['email'], $_REQUEST['foto_file'],$_REQUEST['clienteMail'] );
+            $a=array($_REQUEST['userName'], $_REQUEST['email'], $fotoURL,$_REQUEST['clienteMail'] );
             //$pdo1 = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
