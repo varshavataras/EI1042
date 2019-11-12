@@ -33,7 +33,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
     ?>
     <h1>Gestión de Usuarios </h1>
-    <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST">
+    <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data">
         <label for="clienteMail">Tu correo</label>
         <br/>
         <input type="text" name="clienteMail"  size="20" maxlength="25" value="<?php print $user_email?>"
