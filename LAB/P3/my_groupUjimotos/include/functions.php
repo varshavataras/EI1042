@@ -108,7 +108,7 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             if (1>$a) {echo "InCorrecto $query";}
-            else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso=listar_ujimotos'));
+            else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
             break;
         case "listar_ujimotos":
             //Listado amigos o de todos si se es administrador.
