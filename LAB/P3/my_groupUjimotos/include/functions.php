@@ -136,7 +136,9 @@ function UjiMotos_MP_my_datos()
                         if ($key == 'foto_file'){
                             echo "<td>", '<img src="'.$val.'" />', "</td>";
                         }
-                        echo "<td>", $val, "</td>";
+                        else{
+                            echo "<td>", $val, "</td>";
+                        }
                     }
                     print "</tr>";
                 }
