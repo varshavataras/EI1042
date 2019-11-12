@@ -95,7 +95,7 @@ function UjiMotos_MP_my_datos()
                 return;
             }
             $fotoURL="";
-            $IMAGENES_USUARIOS = '../';
+            $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto', $_FILES) && $_POST['email']){
                 $fotoURL = $IMAGENES_USUARIOS.$_POST['userName']."_".$_FILES['foto']['name'];
                 if (move_uploaded_file($_FILES['foto']['tmp_name'],$fotoURL)){
