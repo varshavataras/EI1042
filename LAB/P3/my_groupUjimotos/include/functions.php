@@ -125,7 +125,7 @@ function UjiMotos_MP_my_datos()
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
             if (is_array($rows)) {/* Creamos un listado como una tabla HTML*/
                 print '<div><table><th>';
-                foreach ( array_keys($rows[0])as $key) {
+                foreach ( array_keys($rows[1])as $key) {
                     echo "<td>", $key,"</td>";
                 }
                 print "</th>";
