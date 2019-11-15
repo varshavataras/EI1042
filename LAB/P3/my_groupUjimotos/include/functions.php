@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function UjiMotos_MP_CrearT($tabla){
     
     $MP_pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
-    $query="CREATE TABLE IF NOT EXISTS $tabla (person_id INT(11) NOT NULL AUTO_INCREMENT, nombre VARCHAR(100),  email VARCHAR(100),  foto_file VARCHAR(25), clienteMail VARCHAR(100),  PRIMARY KEY(person_id))";
+    $query="CREATE TABLE IF NOT EXISTS $tabla (person_id INT(11) NOT NULL AUTO_INCREMENT, nombre VARCHAR(100),  email VARCHAR(100),  foto_file VARCHAR(100), clienteMail VARCHAR(100),  PRIMARY KEY(person_id))";
     $consult = $MP_pdo->prepare($query);
     $consult->execute (array());
 }
@@ -43,12 +43,12 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="nombre">Nombre</label>
         <br/>
         <input type="text" name="userName" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["userName"] ?>"
-        placeholder="Miguel Cervantes" />
+        placeholder="Nombre" />
         <br/>
         <label for="email">Email</label>
         <br/>
         <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
-        placeholder="kiko@ic.es" />
+        placeholder="ejemplo@correo.com" />
         <br/>
         <label for="foto_file">Foto</label>
         <br/>
@@ -97,7 +97,7 @@ function UjiMotos_MP_my_datos()
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
-                $fotoURL = $IMAGENES_USUARIOS.$_POST['userName']."_".$_FILES['foto_file']['name'];
+                $fotoURL = $IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
                 if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                     echo "foto subida con éxito";
                 }
@@ -111,9 +111,10 @@ function UjiMotos_MP_my_datos()
             else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
             break;
         case "listar_ujimotos":
+			
             //Listado amigos o de todos si se es administrador.
             $a=array();
-            if (current_user_can('administrator')) {$query = "SELECT     * FROM       $table ";}
+            if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table ";}
             else {$campo="clienteMail";
                 $query = "SELECT     * FROM  $table      WHERE $campo =?";
                 $a=array( $user_email);
@@ -123,12 +124,19 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
+			
             if (is_array($rows)) {/* Creamos un listado como una tabla HTML*/
-                print '<div><table><th>';
-                foreach ( array_keys($rows[1])as $key) {
-                    echo "<td>", $key,"</td>";
+               	
+				echo "<div>","<table><tr>";
+				
+				
+                foreach ( array_keys($rows[0])as $key) {
+					
+                    echo "<th>",$key,"</th>";
                 }
-                print "</th>";
+				
+				print "</tr>";
+                
                 foreach ($rows as $row) {
                     print "<tr>";
                     foreach ($row as $key => $val) {

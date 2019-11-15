@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: my_groupUjiMotos
+Plugin Name: my_group1
 Description: Register group of persons.
 Author URI: lola L
 Author Email: dllido@uji.es
@@ -34,6 +34,46 @@ function UjiMotos_MP_Ejecutar_crearT(){
     UjiMotos_MP_CrearT("A_GrupoCliente000");
 }
 //add_action('admin_post_nopriv_my_datos', 'MP_my_datos'); //no autentificados
-add_action('admin_post_my_datos_ujimotos', "UjiMotos_MP_my_datos"); 
+add_action('admin_post_my_datos_ujimotos', "UjiMotos_MP_my_datos");
+
+function hook_css(){
+	?>
+
+		<style>
+			 table,td{
+				 
+				font-weight: bold;
+				text-align:center;
+				border: 1px solid #535353;
+				padding: 15px;
+				border-bottom: 1px solid #8b2525;	
+			}
+			
+			label{
+				text-transform: uppercase;
+			}
+			
+			th {
+				font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+				text-align:center;
+  				background-color: #676767;
+  				color: white;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+			
+			legend, input{
+				font-style: italic;	
+			}
+			
+			tr:hover {background-color: #bfbfbf;}
+			
+			input:hover {background-color: #ffb7b7;}
+			
+		</style>
+
+	<?php
+}
+add_action('wp_head','hook_css');
 
 ?>
