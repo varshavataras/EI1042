@@ -59,7 +59,7 @@ function UjiMotos_MP_Update_Form($consulta)
 		<input type="text" name="client_fotofile" class="item_requerid" size="20" maxlength="25" value="<?php print $client_fotofile ?>"
 		 placeholder=""  />
 		<br/>
-	<label for="client_mail">Amigo de</label>
+	<label for="client_mail">Añadido por</label>
 		<br/>
 		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
 		 placeholder="" readonly />
