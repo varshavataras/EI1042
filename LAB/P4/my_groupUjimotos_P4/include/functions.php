@@ -54,11 +54,12 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <br/>
         <input type="file" name="foto_file" value="<?php print $MP_user["foto_file"] ?>"
          />
-	<p> <img id="img_foto" src="" width="100" height="60"></p>
+	
         <p>
         <input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
     </form>
+	<p> <img id="img_foto" src="" width="100" height="60"></p>
 	<script type="text/javascript" charset="utf-8">
 		function mostrarFoto(file, imagen) {
 			var reader = new FileReader();
