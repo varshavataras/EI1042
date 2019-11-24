@@ -108,12 +108,13 @@ function UjiMotos_MP_my_datos()
 
     switch ($_REQUEST['proceso_ujimotos']) {
 	case "modificar_ujimotos":
-		    $person_id=$_REQUEST['id'];
+		    $campo="person_id";
 		 $a=array();
-            if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table WHERE $person_id =?";}
+            if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table WHERE $campo =?";}
             else {$campo="clienteMail";
-                $query = "SELECT     * FROM  $table      WHERE $person_id =?";
-                $a=array( $user_email);
+		  $person=$_REQUEST['id'];
+                $query = "SELECT     * FROM  $table      WHERE $campo =?";
+                $a=array( $person);
  
             } 
             
