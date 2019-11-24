@@ -62,8 +62,8 @@ function UjiMotos_MP_Update_Form($consulta)
 	<label for="client_mail">Añadido por</label>
 		<br/>
 		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
-		 placeholder="" readonly />
-		<br/>
+		 placeholder="" readonly >
+		
 	<input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
 </form>
