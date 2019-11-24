@@ -49,13 +49,14 @@ function UjiMotos_MP_Update_Form($consulta)
 		<input type="text" name="client_name" class="item_requerid" size="20" maxlength="25" value="<?php print $client_name ?>"
 		 placeholder=""  />
 		<br/>
-	<label for="client_email">Nombre</label>
+	<label for="client_email">Email</label>
 		<br/>
 		<input type="text" name="client_email" class="item_requerid" size="20" maxlength="25" value="<?php print $client_email ?>"
 		 placeholder=""  />
 		<br/>
 	<label for="client_fotofile">Foto</label>
 		<br/>
+	<img src="client_fotofile">
 		<input type="text" name="client_fotofile" class="item_requerid" size="20" maxlength="25" value="<?php print $client_fotofile ?>"
 		 placeholder=""  />
 		<br/>
