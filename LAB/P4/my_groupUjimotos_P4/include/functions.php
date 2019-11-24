@@ -108,7 +108,7 @@ function UjiMotos_MP_my_datos()
 
     switch ($_REQUEST['proceso_ujimotos']) {
 	case "modificar_ujimotos":
-		$person_id=$_POST['id'];
+		$person_id=$_REQUEST['id'];
 		$query = "SELECT     * FROM  $table      WHERE $person_id =?";	
 		echo "<div>","<table><tr>";		
                 foreach ( array_keys($rows[0])as $key) {		
