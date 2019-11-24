@@ -111,6 +111,7 @@ function UjiMotos_MP_my_datos()
 		$person_id=$_REQUEST['id'];
 		$query = "SELECT     * FROM  $table      WHERE $person_id =?";	
 		$consult = $MP_pdo->prepare($query);
+		$a=$consult->execute($a);
 		$rows=$consult->fetchAll(PDO::FETCH_ASSOC);
 		echo "<div>","<table><tr>";		
                 foreach ( array_keys($rows[0])as $key) {		
