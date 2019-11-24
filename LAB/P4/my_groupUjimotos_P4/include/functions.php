@@ -109,6 +109,7 @@ function UjiMotos_MP_my_datos()
     switch ($_REQUEST['proceso_ujimotos']) {
 	case "modificar_ujimotos":
 		 $a=array();
+		 $a=array( $user_email);
 		$person_id=$_REQUEST['id'];
 		$query = "SELECT     * FROM  $table      WHERE $person_id =?";	
 		$consult = $MP_pdo->prepare($query);
