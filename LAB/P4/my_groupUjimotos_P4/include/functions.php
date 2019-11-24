@@ -112,7 +112,7 @@ function UjiMotos_MP_my_datos()
 		 $a=array();
             if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table ";}
             else {$campo="clienteMail";
-                $query = "SELECT     * FROM  $table      WHERE $campo =? and $person_id =?";
+                $query = "SELECT     * FROM  $table      WHERE $person_id =?";
                 $a=array( $user_email);
  
             } 
