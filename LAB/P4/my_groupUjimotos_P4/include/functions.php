@@ -57,8 +57,7 @@ function UjiMotos_MP_Update_Form($consulta)
 	<label for="client_fotofile">Foto</label>
 		<br/>
 	<img src="<?php echo $client_fotofile; ?>"/>
-		<input type="text" name="client_fotofile" class="item_requerid" size="20" maxlength="25" value="<?php print $client_fotofile ?>"
-		 placeholder=""  />
+		<input type="file" name="foto_file" id="foto_file" value="<?php print $client_fotofile ?>"
 		<br/>
 	<label for="client_mail">Añadido por</label>
 		<br/>
