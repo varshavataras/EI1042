@@ -214,14 +214,21 @@ function UjiMotos_MP_my_datos()
         	return;
     	}
     	$query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";
-    
+    	$fotoURL="";
+        $IMAGENES_USUARIOS = '../fotos/';
+        if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
+             $fotoURL = $IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
+             if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
+                    echo "foto subida con éxito";
+                }
+            }
     	echo $query;
     	try { 
-        	$a=array($_REQUEST['client_name'], $_REQUEST['client_email'] , $_REQUEST['client_fotofile'], $_REQUEST['client_id'] );
+        	$a=array($_REQUEST['client_name'], $_REQUEST['client_email'] , $fotoURL, $_REQUEST['client_id'] );
         	print_r ($a);
         
         	$consult = $pdo->prepare($query);
-        	$a=$consult->execute(array($_REQUEST['client_name'], $_REQUEST['client_email'], $_REQUEST['client_fotofile'], $_REQUEST['client_id']));
+        	$a=$consult->execute(array($_REQUEST['client_name'], $_REQUEST['client_email'], $fotoURL, $_REQUEST['client_id']));
         	if (1>$a)echo "InCorrecto";
     
    	 } catch (PDOExeption $e) {
