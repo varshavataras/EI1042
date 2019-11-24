@@ -32,6 +32,9 @@ function UjiMotos_MP_Update_Form($consulta)
 {
 	$client_id=$consulta[0]["person_id"];
 	$client_name=$consulta[0]["nombre"];
+	$client_email=$consulta[0]["email"];
+	$client_fotofile=$consulta[0]["foto_file"];
+	$client_mail=$consulta[0]["clienteMail"];
 ?>
 
 <form>
@@ -45,6 +48,21 @@ function UjiMotos_MP_Update_Form($consulta)
 		<br/>
 		<input type="text" name="client_name" class="item_requerid" size="20" maxlength="25" value="<?php print $client_name ?>"
 		 placeholder=""  />
+		<br/>
+	<label for="client_email">Nombre</label>
+		<br/>
+		<input type="text" name="client_email" class="item_requerid" size="20" maxlength="25" value="<?php print $client_email ?>"
+		 placeholder=""  />
+		<br/>
+	<label for="client_fotofile">Foto</label>
+		<br/>
+		<input type="text" name="client_fotofile" class="item_requerid" size="20" maxlength="25" value="<?php print $client_fotofile ?>"
+		 placeholder=""  />
+		<br/>
+	<label for="client_mail">Amigo de</label>
+		<br/>
+		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
+		 placeholder="" readonly />
 		<br/>
 </form>
 <?php	
