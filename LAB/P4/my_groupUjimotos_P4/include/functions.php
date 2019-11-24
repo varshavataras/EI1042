@@ -37,7 +37,7 @@ function UjiMotos_MP_Update_Form($consulta)
 	$client_mail=$consulta[0]["clienteMail"];
 ?>
 
-<form>
+<form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=actualizar_ujimotos" method="POST" enctype="multipart/form-data">
 	<legend>Datos básicos</legend>
 		<label for="client_id">ID</label>
 		<br/>
@@ -204,6 +204,30 @@ function UjiMotos_MP_my_datos()
 		
 		
             break; 
+		    
+	case "actualizar_ujimotos":
+	$datos = $_REQUEST;
+    	if (count($_REQUEST) < 6) {
+        	$data["error"] = "No has rellenado el formulario correctamente";
+        	return;
+    	}
+    	$query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";
+    
+    	echo $query;
+    	try { 
+        	$a=array($_REQUEST['client_name'], $_REQUEST['client_email'] , $_REQUEST['client_fotofile'], $_REQUEST['client_id'] );
+        	print_r ($a);
+        
+        	$consult = $pdo->prepare($query);
+        	$a=$consult->execute(array($_REQUEST['client_name'], $_REQUEST['client_email'], $_REQUEST['client_fotofile'], $_REQUEST['client_id']));
+        	if (1>$a)echo "InCorrecto";
+    
+   	 } catch (PDOExeption $e) {
+        	echo ($e->getMessage());
+    	}
+            	if (1>$a) {echo "InCorrecto $query";}
+            	else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
+            break;    
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
