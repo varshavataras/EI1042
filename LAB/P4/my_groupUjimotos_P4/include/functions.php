@@ -28,10 +28,12 @@ function UjiMotos_MP_CrearT($tabla){
     $consult->execute (array());
 }
 
+
 function UjiMotos_MP_Update_Form($consulta)
 {
+	$client_id=$consulta[0]["person_id"];
 ?>
-$client_id=$consulta[0]["person_id"];
+
 <form>
 	<legend>Datos básicos</legend>
 		<label for="client_id">ID</label>
@@ -42,7 +44,6 @@ $client_id=$consulta[0]["person_id"];
 </form>
 <?php	
 }
-
 
 
 function UjiMotos_MP_Register_Form($MP_user , $user_email)
@@ -176,13 +177,14 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
-		UjiMotos_MP_Update_Form($rows);	
+		UjiMotos_MP_Update_Form($rows);
+		
+		
             break; 
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
-
         case "registrar_ujimotos":
             if (count($_REQUEST) < 3) {
                 print ("No has rellenado el formulario correctamente");
