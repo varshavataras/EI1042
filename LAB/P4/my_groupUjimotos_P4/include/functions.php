@@ -107,6 +107,28 @@ function UjiMotos_MP_my_datos()
     echo '<div class="wrap">';
 
     switch ($_REQUEST['proceso_ujimotos']) {
+	case "modificar_ujimotos":
+		$person_id=$_POST['id'];
+		$query = "SELECT     * FROM  $table      WHERE $person_id =?";	
+		echo "<div>","<table><tr>";		
+                foreach ( array_keys($rows[0])as $key) {		
+                    echo "<th>",$key,"</th>";
+		}	
+				print "</tr>";
+                foreach ($rows as $row) {
+                    print "<tr>";
+                    foreach ($row as $key => $val) {
+                        if ($key == 'foto_file'){
+                            echo "<td>",'<img src="'.$val.'" />',"</td>";
+                        }
+                        else{
+                            echo "<td>", $val, "</td>";
+                        }
+                    }
+                    print "</tr>";
+                }
+                print "</table></div>";
+		break;  
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
