@@ -109,18 +109,29 @@ function UjiMotos_MP_my_datos()
     switch ($_REQUEST['proceso_ujimotos']) {
 	case "modificar_ujimotos":
 		 $a=array();
-		 $a=array( $user_email);
-		$person_id=$_REQUEST['id'];
-		$query = "SELECT     * FROM  $table      WHERE $person_id =?";	
-		$consult = $MP_pdo->prepare($query);
-		$a=$consult->execute($a);
-		$rows=$consult->fetchAll(PDO::FETCH_ASSOC);
-		if (is_array($rows)) {    
-		echo "<div>","<table><tr>";		
-                foreach ( array_keys($rows[0])as $key) {		
+            if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table ";}
+            else {$campo="clienteMail";
+                $query = "SELECT     * FROM  $table      WHERE $campo =?";
+                $a=array( $user_email);
+ 
+            } 
+            
+            $consult = $MP_pdo->prepare($query);
+            $a=$consult->execute($a);
+            $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
+			
+            if (is_array($rows)) {/* Creamos un listado como una tabla HTML*/
+               	
+				echo "<div>","<table><tr>";
+				
+				
+                foreach ( array_keys($rows[0])as $key) {
+					
                     echo "<th>",$key,"</th>";
-		}	
+                }
+				
 				print "</tr>";
+                
                 foreach ($rows as $row) {
                     print "<tr>";
                     foreach ($row as $key => $val) {
@@ -134,8 +145,9 @@ function UjiMotos_MP_my_datos()
                     print "</tr>";
                 }
                 print "</table></div>";
-		}
-		break;  
+            }
+            else{echo "No existen valores";}
+            break;  
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
