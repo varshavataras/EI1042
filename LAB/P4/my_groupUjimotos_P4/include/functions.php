@@ -28,6 +28,22 @@ function UjiMotos_MP_CrearT($tabla){
     $consult->execute (array());
 }
 
+function UjiMotos_MP_Update_Form($consulta)
+{
+?>
+$client_id=$consulta[0]["person_id"];
+<form>
+	<legend>Datos básicos</legend>
+		<label for="client_id">ID</label>
+		<br/>
+		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
+		 placeholder=""  readonly />
+		<br/>
+</form>
+<?php	
+}
+
+
 
 function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
@@ -160,23 +176,13 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
-		?>
-		<h1>Gestión de Usuarios </h1>
-		<form class="fom_usuario" action="?action=actualizar" method="POST">		    
-		    $client_id=$rows[0]["person_id"];
-		   <legend>Datos básicos</legend>
-		<label for="client_id">ID</label>
-		<br/>
-		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
-		 placeholder=""  readonly />
-		<br/> 
-            </form>
+		UjiMotos_MP_Update_Form($rows);	
             break; 
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
-<?php
+
         case "registrar_ujimotos":
             if (count($_REQUEST) < 3) {
                 print ("No has rellenado el formulario correctamente");
