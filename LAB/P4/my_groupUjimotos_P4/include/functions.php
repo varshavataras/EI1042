@@ -38,8 +38,7 @@ function UjiMotos_MP_Update_Form($consulta)
 ?>
 
 <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=actualizar_ujimotos" method="POST" enctype="multipart/form-data">
-	<legend>Datos básicos</legend>
-		<label for="client_id">ID</label>
+	<label for="client_id">ID</label>
 		<br/>
 		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
 		 placeholder=""  readonly />
