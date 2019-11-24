@@ -52,7 +52,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <br/>
         <label for="foto_file">Foto</label>
         <br/>
-        <input type="file" name="foto_file" value="<?php print $MP_user["foto_file"] ?>"
+        <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
          />
 	
         <p>
