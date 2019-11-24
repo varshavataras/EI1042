@@ -110,12 +110,9 @@ function UjiMotos_MP_my_datos()
 	case "modificar_ujimotos":
 		$person=$_REQUEST['id'];
 		$a=array();
-            if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table ";}
-            else {$campo="person_id";
+            	$campo="person_id";
                 $query = "SELECT     * FROM  $table      WHERE $campo =?";
                 $a=array( $person);
- 
-            } 
             
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
