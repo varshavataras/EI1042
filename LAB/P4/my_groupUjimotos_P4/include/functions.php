@@ -31,7 +31,7 @@ function UjiMotos_MP_CrearT($tabla){
 
 function UjiMotos_MP_Update_Form($consulta)
 {
-	$id=$consulta[0]["id"];
+	$id=$consulta[0]["person_id"];
 	$nombre=$consulta[1]["nombre"];
 	$email=$consulta[2]["email"];
 	
