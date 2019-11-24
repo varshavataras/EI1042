@@ -145,7 +145,33 @@ function UjiMotos_MP_my_datos()
                 print "</table></div>";
             }
             else{echo "No existen valores";}
-            break;  
+            break; 
+		    
+	case "modificar_ujimotos1":
+		$person=$_REQUEST['id'];
+		$a=array();
+            	$campo="person_id";
+                $query = "SELECT     * FROM  $table      WHERE $campo =?";
+                $a=array( $person);
+            
+		    
+			    
+		    
+            $consult = $MP_pdo->prepare($query);
+            $a=$consult->execute($a);
+            $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
+		
+		<h1>Gestión de Usuarios </h1>
+		<form class="fom_usuario" action="?action=actualizar" method="POST">		    
+		    $client_id=$rows[0]["person_id"];
+		   <legend>Datos básicos</legend>
+		<label for="client_id">ID</label>
+		<br/>
+		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
+		 placeholder=""  readonly />
+		<br/> 
+            </form>
+            break; 
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
