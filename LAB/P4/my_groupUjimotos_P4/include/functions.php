@@ -160,7 +160,7 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
-		
+		?>
 		<h1>Gestión de Usuarios </h1>
 		<form class="fom_usuario" action="?action=actualizar" method="POST">		    
 		    $client_id=$rows[0]["person_id"];
@@ -176,6 +176,7 @@ function UjiMotos_MP_my_datos()
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
+<?php
         case "registrar_ujimotos":
             if (count($_REQUEST) < 3) {
                 print ("No has rellenado el formulario correctamente");
