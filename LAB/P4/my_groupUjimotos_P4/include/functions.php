@@ -31,6 +31,7 @@ function UjiMotos_MP_CrearT($tabla){
 function UjiMotos_MP_Update_Form($consulta)
 {
 	$client_id=$consulta[0]["person_id"];
+	$client_name=$consulta[0]["nombre"];
 ?>
 
 <form>
@@ -39,6 +40,11 @@ function UjiMotos_MP_Update_Form($consulta)
 		<br/>
 		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
 		 placeholder=""  readonly />
+		<br/>
+	<label for="client_name">Nombre</label>
+		<br/>
+		<input type="text" name="client_name" class="item_requerid" size="20" maxlength="25" value="<?php print $client_name ?>"
+		 placeholder=""  />
 		<br/>
 </form>
 <?php	
