@@ -21,7 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 //Funcion instalación plugin. Crea tabla
 function UjiMotos_MP_CrearT($tabla){
-    
     $MP_pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
     $query="CREATE TABLE IF NOT EXISTS $tabla (person_id INT(11) NOT NULL AUTO_INCREMENT, nombre VARCHAR(100),  email VARCHAR(100),  foto_file VARCHAR(100), clienteMail VARCHAR(100),  PRIMARY KEY(person_id))";
     $consult = $MP_pdo->prepare($query);
