@@ -82,24 +82,24 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="clienteMail">Tu correo</label>
         <br/>
         <input type="text" name="clienteMail"  size="20" maxlength="25" value="<?php print $user_email?>"
-        readonly />
+        readonly required/>
         <br/>
         <legend>Datos básicos</legend>
         <label for="nombre">Nombre</label>
         <br/>
         <input type="text" name="userName" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["userName"] ?>"
-        placeholder="Nombre" />
+        placeholder="Nombre" required/>
         <br/>
         <label for="email">Email</label>
         <br/>
         <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
-        placeholder="mail@example.com" />
+        placeholder="mail@example.com" required/>
         <br/>
         <label for="foto_file">Foto</label>
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
         <br/>
         <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
-         />
+        required/>
 	
         <p>
         <input type="submit" value="Enviar">
@@ -241,25 +241,37 @@ function UjiMotos_MP_my_datos()
             break;
 
         case "registrar_ujimotos":
-
+            
+            $MP_user=null;
             $nombreuser=$_REQUEST['userName'];
             $emailuser=$_REQUEST['email'];
             $fotouser=$_FILES['foto_file'];
+
             if($nombreuser == ""){
-                echo "<div>El campo nombre no puede estar vacío</div>";
+                echo "<div style="background-color:red">El campo nombre no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;  
             }
             if($emailuser == ""){
-                echo "<div>El campo de email no puede estar vacío</div>";
+                echo "<div style="background-color:red">El campo de email no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;  
 
             }
             if($fotouser == null){
-                echo "<div>El campo de foto no puede estar vacío</div>";
+                echo "<div style="background-color:red">El campo de foto no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;              
+            }
+
+            $imagen = getimagesize($fotouser);    //Sacamos la información
+            $ancho = $imagen[0];              //Ancho
+            $alto = $imagen[1];               //Alto
+
+            if ($alto > 1000 || $ancho > 1000){
+                echo "<div style="background-color:red">La foto puede ser máximo de 1.000x1.000</div>";
+                UjiMotos_MP_Register_Form($MP_user,$user_email);
+                break;     
             }
 
 
