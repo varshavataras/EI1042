@@ -75,7 +75,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
 
 	if($_POST){
-		$nombre=$_POST["userName"];
+		$nombre=$_POST["nombre"];
 		$mail=$_POST["email"];
 		$foto_file=$_POST["foto_file"];
 		
