@@ -72,6 +72,9 @@ function UjiMotos_MP_Update_Form($consulta)
 
 function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
+
+	
+	
     ?>
     <h1>Gestión de Usuarios </h1>
     <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data">
@@ -100,6 +103,11 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <p>
         <input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
+		
+	<?php
+		include("validar-form.php");  
+	?>
+		
     </form>
 	
 	<script type="text/javascript" charset="utf-8">
