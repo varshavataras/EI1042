@@ -99,7 +99,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
         <br/>
         <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
-        required/>
+        required accept="image/jpg,image/jpeg"/>
 	
         <p>
         <input type="submit" value="Enviar">
