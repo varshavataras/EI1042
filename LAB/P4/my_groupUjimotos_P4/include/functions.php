@@ -76,7 +76,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 	
 	
     ?>
-    <h1>Gestión de Usuarios </h1>
+    <h1>Gestión de Usuarios BIEN</h1>
     <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data">
         <label for="clienteMail">Tu correo</label>
         <br/>
@@ -92,7 +92,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="email">Email</label>
         <br/>
         <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
-        placeholder="nombre@correo.xyz" />
+        placeholder="nombre@correo.xyzaaaaaa" />
         <br/>
         <label for="foto_file">Foto</label>
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
