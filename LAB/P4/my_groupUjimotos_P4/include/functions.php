@@ -88,7 +88,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="nombre">Nombre</label>
         <br/>
         <input type="text" name="userName" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["userName"] ?>"
-        placeholder="Nombre" required/>
+        placeholder="Nombre" />
         <br/>
         <label for="email">Email</label>
         <br/>
@@ -245,7 +245,18 @@ function UjiMotos_MP_my_datos()
             $MP_user=null;
             $nombreuser=$_REQUEST['userName'];
             $emailuser=$_REQUEST['email'];
-            $fotouser=$_FILES['foto_file'];
+			$fotouser=null;
+			if (isset($_FILES['foto_file']['name'])){
+				$fotouser=$_FILES['foto_file']['name'];
+			}
+            
+			
+			$imagen = getimagesize($fotouser);    //Sacamos la información
+            $ancho = $imagen[0];              //Ancho
+            $alto = $imagen[1];               //Alto
+			
+			echo "$fotouser";
+			echo "$alto";
 
             
             if($nombreuser == ""){
@@ -265,15 +276,14 @@ function UjiMotos_MP_my_datos()
                 break;              
             }
 
-            $imagen = getimagesize($fotouser);    //Sacamos la información
-            $ancho = $imagen[0];              //Ancho
-            $alto = $imagen[1];               //Alto
 
             if ($alto > 1000 || $ancho > 1000){
                 echo "<div>La foto puede ser máximo de 1.000x1.000</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;     
             }
+			
+			
 
 
                 
@@ -358,3 +368,4 @@ function UjiMotos_MP_my_datos()
 //add_action('admin_post_nopriv_my_datos', 'my_datos');
 //add_action('admin_post_my_datos', 'my_datos'); //no autentificados
 ?>
+
