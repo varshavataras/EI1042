@@ -248,18 +248,18 @@ function UjiMotos_MP_my_datos()
             $fotouser=$_FILES['foto_file'];
 
             if($nombreuser == ""){
-                echo "<div style='background-color:red'>El campo nombre no puede estar vacío</div>";
+                echo "<div>El campo nombre no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;  
             }
             if($emailuser == ""){
-                echo "<div style='background-color:red'>El campo de email no puede estar vacío</div>";
+                echo "<div>El campo de email no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;  
 
             }
             if($fotouser == null){
-                echo "<div style='background-color:red'>El campo de foto no puede estar vacío</div>";
+                echo "<div>El campo de foto no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;              
             }
@@ -269,7 +269,7 @@ function UjiMotos_MP_my_datos()
             $alto = $imagen[1];               //Alto
 
             if ($alto > 1000 || $ancho > 1000){
-                echo "<div style='background-color:red'>La foto puede ser máximo de 1.000x1.000</div>";
+                echo "<div>La foto puede ser máximo de 1.000x1.000</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;     
             }
