@@ -247,6 +247,7 @@ function UjiMotos_MP_my_datos()
             $emailuser=$_REQUEST['email'];
             $fotouser=$_FILES['foto_file'];
 
+            
             if($nombreuser == ""){
                 echo "<div>El campo nombre no puede estar vacío</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
