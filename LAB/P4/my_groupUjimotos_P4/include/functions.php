@@ -149,7 +149,7 @@ function UjiMotos_MP_my_datos()
     echo '<div class="wrap">';
 
     switch ($_REQUEST['proceso_ujimotos']) {
-
+        
 	case "modificar_ujimotos":
 		$person=$_REQUEST['id'];
 		$a=array();
@@ -241,7 +241,7 @@ function UjiMotos_MP_my_datos()
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
-                $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['client_fotofile']['name'];
+                $fotoURL = $IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
                 if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                     echo "foto subida con éxito";
                 }
