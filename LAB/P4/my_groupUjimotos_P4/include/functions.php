@@ -241,8 +241,8 @@ function UjiMotos_MP_my_datos()
             break;
 
         case "registrar_ujimotos":
-
-            if($nombre == ""){
+            $nombreu=$_REQUEST['userName'];
+            if($nombreu == ""){
                 echo "<div>El campo nombre no puede estar vacío</div>";
                 return;
             }
