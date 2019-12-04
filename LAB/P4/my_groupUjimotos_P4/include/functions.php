@@ -103,6 +103,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
     </form>
 	
 	<script type="text/javascript" charset="utf-8">
+
 		function mostrarFoto(file, imagen) {
 			var reader = new FileReader();
 			reader.addEventListener("load", function () {
@@ -148,6 +149,7 @@ function UjiMotos_MP_my_datos()
     echo '<div class="wrap">';
 
     switch ($_REQUEST['proceso_ujimotos']) {
+
 	case "modificar_ujimotos":
 		$person=$_REQUEST['id'];
 		$a=array();
@@ -190,7 +192,7 @@ function UjiMotos_MP_my_datos()
 		    
 	case "modificar_ujimotos1":
 		
-		$person=$_REQUEST['id'];
+        $person=$_REQUEST['id'];
 		$a=array();
             	$campo="person_id";
                 $query = "SELECT     * FROM  $table      WHERE $campo =?";
@@ -202,7 +204,7 @@ function UjiMotos_MP_my_datos()
             $consult = $MP_pdo->prepare($query);
             $a=$consult->execute($a);
             $rows=$consult->fetchAll(PDO::FETCH_ASSOC);
-		UjiMotos_MP_Update_Form($rows);
+		    UjiMotos_MP_Update_Form($rows);
 		
 		
             break; 
@@ -225,10 +227,12 @@ function UjiMotos_MP_my_datos()
             if (1>$a) {echo "InCorrecto $query";}
             else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
             break;  
+
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
             break;
+
         case "registrar_ujimotos":
             if (count($_REQUEST) < 3) {
                 print ("No has rellenado el formulario correctamente");
@@ -237,7 +241,7 @@ function UjiMotos_MP_my_datos()
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
-                $fotoURL = $IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
+                $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['client_fotofile']['name'];
                 if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                     echo "foto subida con éxito";
                 }
@@ -250,6 +254,7 @@ function UjiMotos_MP_my_datos()
             if (1>$a) {echo "InCorrecto $query";}
             else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
             break;
+
         case "listar_ujimotos":
 			
             //Listado amigos o de todos si se es administrador.

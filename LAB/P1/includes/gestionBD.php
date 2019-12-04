@@ -62,7 +62,7 @@ function creatablaUsuarios($pdo,$table){
     );
     */
     $query="CREATE TABLE IF NOT EXISTS $table (client_id INT(11) NOT NULL AUTO_INCREMENT,
-             nombre VARCHAR(100), apellidos VARCHAR(100), email VARCHAR(100), dni VARCHAR(15) ,clave VARCHAR(25), foto_file VARCHAR(25),   PRIMARY KEY(client_id))";
+             nombre VARCHAR(100), apellidos VARCHAR(100), email VARCHAR(100), dni VARCHAR(15) ,clave VARCHAR(25), foto_file VARCHAR(100),   PRIMARY KEY(client_id))";
     //echo $query;
     $pdo->exec($query);
 }
