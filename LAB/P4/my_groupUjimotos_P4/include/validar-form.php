@@ -1,6 +1,6 @@
 <?php
 	
-	if(isset($_POST['submit'])){
+	if(isset($_POST['enviar'])){
 		$imagen=$_POST['foto_file'];
 		$nombre=$_POST['userName'];
 		if (empty($imagen)){
