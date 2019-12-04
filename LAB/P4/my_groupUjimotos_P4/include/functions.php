@@ -73,7 +73,18 @@ function UjiMotos_MP_Update_Form($consulta)
 function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
 
-	
+	if(isset($_POST['clienteMail'])){
+		$nombre=$_POST["userName"];
+		$mail=$_POST["email"];
+		$foto_file=$_POST["foto_file"];
+		
+		$campos=array();
+		
+		if($nombre == ""){
+			array_push($campos,"El campo nombre no puede estar vacío");
+		}
+		
+	}
 	
     ?>
     <h1>Gestión de Usuarios </h1>
