@@ -92,7 +92,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="email">Email</label>
         <br/>
         <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
-        placeholder="ejemplo@correo.com" />
+        placeholder="nombre@correo.xyz" />
         <br/>
         <label for="foto_file">Foto</label>
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
@@ -104,9 +104,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
 		
-	<?php
-		include("validar-form.php");  
-	?>
+
 		
     </form>
 	
