@@ -241,7 +241,7 @@ function UjiMotos_MP_my_datos()
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
-                $fotoURL = $_POST['client_name']."_".$IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
+                $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$IMAGENES_USUARIOS.$_FILES['foto_file']['name'];
                 if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                     echo "foto subida con éxito";
                 }
