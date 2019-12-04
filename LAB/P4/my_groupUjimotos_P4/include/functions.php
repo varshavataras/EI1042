@@ -66,6 +66,7 @@ function UjiMotos_MP_Update_Form($consulta)
 	<input type="submit" value="Enviar">
         <input type="reset" value="Deshacer">
 </form>
+<div>
 <?php	
 }
 
@@ -83,12 +84,13 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 		$campos=array();
 		
 		if($nombre == ""){
-			array_push($campos,"El campo nombre no puede estar vacío");
+			echo "El campo nombre no puede estar vacío";
 		}
 		
 	}
 	
     ?>
+    </div>
     <h1>Gestión de Usuarios </h1>
     <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data">
         <label for="clienteMail">Tu correo</label>
