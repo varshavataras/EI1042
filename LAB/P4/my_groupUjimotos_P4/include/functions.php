@@ -247,15 +247,15 @@ function UjiMotos_MP_my_datos()
             $fotouser=$_FILES['foto_file'];
             if($nombreuser == ""){
                 echo "<div>El campo nombre no puede estar vacío</div>";
-                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos'));
+                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registro_ujimotos'));
             }
             if($emailuser == ""){
                 echo "<div>El campo de email no puede estar vacío</div>";
-                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos'));            
+                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registro_ujimotos'));            
             }
             if($fotouser == null){
                 echo "<div>El campo de foto no puede estar vacío</div>";
-                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos'));            
+                wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=registro_ujimotos'));            
             }
 
 
