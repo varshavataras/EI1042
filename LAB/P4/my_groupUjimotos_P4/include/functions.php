@@ -63,7 +63,7 @@ function UjiMotos_MP_Update_Form($consulta)
 		 placeholder="" readonly >
 	<p>
 		<br/>
-	<input type="submit" value="Enviar">
+	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.foto_file.value)">
         <input type="reset" value="Deshacer">
 </form>
 <div>
@@ -129,37 +129,39 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 		}
 		ready();
 		
-   function comprueba_extension(formulario, archivo) {
-   extensiones_permitidas = new Array(".jpeg", ".jpg");
-   mierror = "";
-   if (!archivo) {
-      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario
-       mierror = "No has seleccionado ningún archivo";
-   }else{
-      //recupero la extensión de este nombre de archivo
-      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
-      //alert (extension);
-      //compruebo si la extensión está entre las permitidas
-      permitida = false;
-      for (var i = 0; i < extensiones_permitidas.length; i++) {
-         if (extensiones_permitidas[i] == extension) {
-         permitida = true;
-         break;
-         }
-      }
-      if (!permitida) {
-         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join();
-       }else{
-          //submito!
-         
-         formulario.submit();
-         return 1;
-       }
-   }
-   //si estoy aqui es que no se ha podido submitir
-   alert (mierror);
-   return 0;
-} 
+        function comprueba_extension(formulario, archivo) {
+            extensiones_permitidas = new Array(".jpeg", ".jpg");
+            var img = document.getElementById("img_foto");
+   
+            if (!archivo) {
+                //Si no existe archivo, es que no se ha seleccionado un archivo en el formulario
+                alert("No has seleccionado ningún archivo");
+                return false;
+            }
+   
+            else{
+                //saco la extensión de este nombre de archivo
+                extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
+                
+                if(extension != '.jpeg' && extension != '.jpg'){
+                    alert("Sólo se pueden subir archivos con extensiones JPEG o JPG");
+                    return false;
+                }
+
+                if (img.naturalHeight > 1200 || img.naturalWidth > 1600){
+	                alert("Sólo se admiten dimensiones menores a 1200x1600");
+	                alert("Esta imagen mide "+img.naturalHeight+" de altura y "+img.naturalWidth+" de anchura")
+	                return false;
+                }
+
+                else{
+                //enviamos el formulario
+                formulario.submit();
+                return true;
+                }
+            }
+        
+        } 
 		
 
 
