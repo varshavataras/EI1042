@@ -55,7 +55,7 @@ function UjiMotos_MP_Update_Form($consulta)
 		<br/>
 	<label for="client_fotofile">Foto</label>
 		<br/>
-	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>">
+	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>" required>
 		<br/>
 	<label for="client_mail">Añadido por</label>
 		<br/>
@@ -100,7 +100,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
         <br/>
         <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
-         />
+        required/>
 	
         <p>
         <input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.foto_file.value)" >
@@ -297,25 +297,7 @@ function UjiMotos_MP_my_datos()
                 break;  
 
             }
-         
-            
-
-
-
-           /* 
-           
-           if ($alto > 1000 || $ancho > 1000){
-                echo "<div>La foto puede ser máximo de 1.000x1.000</div>";
-                UjiMotos_MP_Register_Form($MP_user,$user_email);
-                break;     
-            }
-            
-            */
-			
-
-
-                
-            
+                    
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
