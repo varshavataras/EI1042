@@ -75,10 +75,11 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
 
 
+
     ?>
     
     <h1>Gestión de Usuarios </h1>
-    <form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data">
+    <form class="fom_usuario" id="formularioRegistro"  action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data" >
         <label for="clienteMail">Tu correo</label>
         <br/>
         <input type="text" name="clienteMail"  size="20" maxlength="25" value="<?php print $user_email?>"
@@ -88,7 +89,7 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
         <label for="nombre">Nombre</label>
         <br/>
         <input type="text" name="userName" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["userName"] ?>"
-        placeholder="Nombre" />
+        placeholder="Nombre" required/>
         <br/>
         <label for="email">Email</label>
         <br/>
@@ -99,10 +100,10 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 	<p> <img id="img_foto" src="" width="100" height="60"></p>
         <br/>
         <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
-        required accept="image/jpg,image/jpeg"/>
+         />
 	
         <p>
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.foto_file.value)" >
         <input type="reset" value="Deshacer">
 		
 
@@ -127,6 +128,51 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 			});
 		}
 		ready();
+		
+		function comprueba_extension(formulario, archivo) {
+   
+   mierror = "";
+   
+   var img = document.getElementById("img_foto");
+
+	alert(img.height);
+	//alert(img.naturalHeight);
+	//alert($("#img_foto").height());
+
+   if (!archivo) {
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario
+       mierror = "No has seleccionado ningún archivo";
+	   alert(mierror);
+	   
+   }else{
+      //recupero la extensión de este nombre de archivo
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
+      //alert (extension);
+      //compruebo si la extensión está entre las permitidas
+      permitida = false;
+      
+      if ("jpg" == extension || "jpeg" == extension) {
+		 permitida = true;
+         break;
+       }
+		 
+      
+      if (!permitida) {
+         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones JPG O JPEG ";
+      }
+	   else{
+          //submito!
+         formulario.submit();
+         return 1;
+       }
+   }
+   //si estoy aqui es que no se ha podido submitir
+   alert(mierror);
+   return 0;
+} 
+		
+
+
 	</script>
 
 <?php
@@ -245,19 +291,8 @@ function UjiMotos_MP_my_datos()
             $MP_user=null;
             $nombreuser=$_REQUEST['userName'];
             $emailuser=$_REQUEST['email'];
-			$fotouser=null;
-			if (isset($_FILES['foto_file']['name'])){
-				$fotouser=$_FILES['foto_file']['name'];
-			}
             
-			
-			$imagen = getimagesize($fotouser);    //Sacamos la información
-            $ancho = $imagen[0];              //Ancho
-            $alto = $imagen[1];               //Alto
-			
-			echo "$fotouser";
-			echo "$alto";
-
+            
             
             if($nombreuser == ""){
                 echo "<div>El campo nombre no puede estar vacío</div>";
@@ -270,19 +305,20 @@ function UjiMotos_MP_my_datos()
                 break;  
 
             }
-            if($fotouser == null){
-                echo "<div>El campo de foto no puede estar vacío</div>";
-                UjiMotos_MP_Register_Form($MP_user,$user_email);
-                break;              
-            }
+         
+            
 
 
-            if ($alto > 1000 || $ancho > 1000){
+
+           /* 
+           
+           if ($alto > 1000 || $ancho > 1000){
                 echo "<div>La foto puede ser máximo de 1.000x1.000</div>";
                 UjiMotos_MP_Register_Form($MP_user,$user_email);
                 break;     
             }
-			
+            
+            */
 			
 
 
@@ -368,4 +404,3 @@ function UjiMotos_MP_my_datos()
 //add_action('admin_post_nopriv_my_datos', 'my_datos');
 //add_action('admin_post_my_datos', 'my_datos'); //no autentificados
 ?>
-
