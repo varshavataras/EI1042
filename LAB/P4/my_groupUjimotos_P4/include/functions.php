@@ -55,16 +55,16 @@ function UjiMotos_MP_Update_Form($consulta)
 		<br/>
 	<label for="client_fotofile">Foto</label>
 		<br/>
-	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>" required>
+	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>" required />
 		<br/>
 	<label for="client_mail">Añadido por</label>
 		<br/>
 		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
-		 placeholder="" readonly >
+		 placeholder="" readonly />
 	<p>
 		<br/>
 	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.client_fotofile.value)">
-        <input type="reset" value="Deshacer">
+        <input type="reset" value="Deshacer" />
 </form>
 <div>
 <?php	
