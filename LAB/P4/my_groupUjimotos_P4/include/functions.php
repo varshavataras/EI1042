@@ -63,7 +63,7 @@ function UjiMotos_MP_Update_Form($consulta)
 		 placeholder="" readonly >
 	<p>
 		<br/>
-	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.foto_file.value)">
+	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.client_fotofile.value)">
         <input type="reset" value="Deshacer">
 </form>
 <div>
