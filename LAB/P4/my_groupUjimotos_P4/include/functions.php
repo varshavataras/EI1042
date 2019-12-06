@@ -37,7 +37,7 @@ function UjiMotos_MP_Update_Form($consulta)
 	$client_mail=$consulta[0]["clienteMail"];
 ?>
 
-<form class="fom_usuario" action="?action=my_datos_ujimotos&proceso_ujimotos=actualizar_ujimotos" method="POST" enctype="multipart/form-data">
+<form class="fom_usuario" id="formularioUpdate" action="?action=my_datos_ujimotos&proceso_ujimotos=actualizar_ujimotos" method="POST" enctype="multipart/form-data">
 	<label for="client_id">ID</label>
 		<br/>
 		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
@@ -54,19 +54,23 @@ function UjiMotos_MP_Update_Form($consulta)
 		 placeholder=""  />
 		<br/>
 	<label for="client_fotofile">Foto</label>
-		<br/>
-	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>">
+		
+        <p><img id="img_foto" src="" width="100" height="60"></p>
+        <br/>
+	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>" required />
 		<br/>
 	<label for="client_mail">Añadido por</label>
 		<br/>
 		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
-		 placeholder="" readonly >
-	<p>
+		 placeholder="" readonly />
+	
 		<br/>
-	<input type="submit" value="Enviar">
+	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.client_fotofile.value)"/> 
         <input type="reset" value="Deshacer">
 </form>
-<div>
+
+
+
 <?php	
 }
 
@@ -110,65 +114,75 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
 		
     </form>
 	
-	<script type="text/javascript" charset="utf-8">
-
-		function mostrarFoto(file, imagen) {
-			var reader = new FileReader();
-			reader.addEventListener("load", function () {
-				imagen.src = reader.result;
-			});
-			reader.readAsDataURL(file);
-		}
-
-		function ready() {
-			var fichero = document.querySelector("#foto_file");
-			var imagen = document.querySelector("#img_foto");
-			fichero.addEventListener("change", function (event) {
-				mostrarFoto(this.files[0], imagen);
-			});
-		}
-		ready();
-		
-        function comprueba_extension(formulario, archivo) {
-            extensiones_permitidas = new Array(".jpeg", ".jpg");
-            var img = document.getElementById("img_foto");
-   
-            if (!archivo) {
-                //Si no existe archivo, es que no se ha seleccionado un archivo en el formulario
-                alert("No has seleccionado ningún archivo");
-                return false;
-            }
-   
-            else{
-                //saco la extensión de este nombre de archivo
-                extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
-                
-                if(extension != '.jpeg' && extension != '.jpg'){
-                    alert("Sólo se pueden subir archivos con extensiones JPEG o JPG");
-                    return false;
-                }
-
-                if (img.naturalHeight > 1200 || img.naturalWidth > 1600){
-	                alert("Sólo se admiten dimensiones menores a 1200x1600");
-	                alert("Esta imagen mide "+img.naturalHeight+" de altura y "+img.naturalWidth+" de anchura")
-	                return false;
-                }
-
-                else{
-                //enviamos el formulario
-                formulario.submit();
-                return true;
-                }
-            }
-        
-        } 
-		
-
-
-	</script>
+	
 
 <?php
 }
+
+?>
+<script type="text/javascript" charset="utf-8">
+
+function mostrarFoto(file, imagen) {
+    var reader = new FileReader();
+    reader.addEventListener("load", function () {
+        imagen.src = reader.result;
+    });
+    reader.readAsDataURL(file);
+}
+
+function ready() {
+    var fichero = document.querySelector("#foto_file");
+    var imagen = document.querySelector("#img_foto");
+    fichero.addEventListener("change", function (event) {
+        mostrarFoto(this.files[0], imagen);
+    });
+}
+ready();
+
+function comprueba_extension(formulario, archivo) {
+    alert("VA");
+    extensiones_permitidas = new Array(".jpeg", ".jpg");
+    var img = document.getElementById("img_foto");
+
+    if (!archivo) {
+        //Si no existe archivo, es que no se ha seleccionado un archivo en el formulario
+        alert("No has seleccionado ningún archivo");
+        return false;
+    }
+
+    else{
+        //saco la extensión de este nombre de archivo
+        extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
+        
+        if(extension != '.jpeg' && extension != '.jpg'){
+            alert("Sólo se pueden subir archivos con extensiones JPEG o JPG");
+            return false;
+        }
+
+        if (img.naturalHeight > 1200 || img.naturalWidth > 1600){
+            alert("Sólo se admiten dimensiones menores a 1200x1600");
+            alert("Esta imagen mide "+img.naturalHeight+" de altura y "+img.naturalWidth+" de anchura")
+            return false;
+        }
+
+        else{
+        //enviamos el formulario
+        formulario.submit();
+        return true;
+        }
+    }
+
+} 
+
+
+
+
+
+</script>
+
+<?php
+
+
 
 //CONTROLADOR
 //Esta función realizará distintas acciones en función del valor del parámetro
