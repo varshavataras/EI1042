@@ -140,7 +140,7 @@ function ready() {
 ready();
 
 function comprueba_extension(formulario, archivo) {
-    alert("VA");
+   
     extensiones_permitidas = new Array(".jpeg", ".jpg");
     var img = document.getElementById("img_foto");
 
@@ -311,25 +311,7 @@ function UjiMotos_MP_my_datos()
                 break;  
 
             }
-         
-            
 
-
-
-           /* 
-           
-           if ($alto > 1000 || $ancho > 1000){
-                echo "<div>La foto puede ser máximo de 1.000x1.000</div>";
-                UjiMotos_MP_Register_Form($MP_user,$user_email);
-                break;     
-            }
-            
-            */
-			
-
-
-                
-            
             $fotoURL="";
             $IMAGENES_USUARIOS = '../fotos/';
             if(array_key_exists('foto_file', $_FILES) && $_POST['email']){
