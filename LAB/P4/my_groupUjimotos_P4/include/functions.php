@@ -54,10 +54,9 @@ function UjiMotos_MP_Update_Form($consulta)
 		 placeholder=""  />
 		<br/>
 	<label for="client_fotofile">Foto</label>
-		
-        <p><img id="img_foto" src="" width="100" height="60"></p>
-        <br/>
-	<input type="file" name="client_fotofile" id="client_fotofile" value="<?php print $client_fotofile ?>" required />
+ <p><img id="img_foto" src="" width="100" height="60"></p>
+    <br/>
+	<input type="file" name="foto_file" id="foto_file" value="<?php print $client_fotofile ?>" required/>
 		<br/>
 	<label for="client_mail">Añadido por</label>
 		<br/>
@@ -66,8 +65,14 @@ function UjiMotos_MP_Update_Form($consulta)
 	
 		<br/>
 	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.client_fotofile.value)"/> 
-        <input type="reset" value="Deshacer">
+        <input type="reset" value="Deshacer"/>
 </form>
+
+<script type="text/javascript" charset="utf-8">
+
+ready();
+
+</script>
 
 
 
@@ -115,6 +120,11 @@ function UjiMotos_MP_Register_Form($MP_user , $user_email)
     </form>
 	
 	
+    <script type="text/javascript" charset="utf-8">
+
+	ready();
+
+    </script>	
 
 <?php
 }
@@ -268,25 +278,25 @@ function UjiMotos_MP_my_datos()
 		
             break; 
 		    
-	case "actualizar_ujimotos":
+            case "actualizar_ujimotos":
 
-    		$fotoURL="";
-            $IMAGENES_USUARIOS = '../fotos/';
-            if(array_key_exists('client_fotofile', $_FILES) && $_POST['client_email']){
-                $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['client_fotofile']['name'];
-                if (move_uploaded_file($_FILES['client_fotofile']['tmp_name'],$fotoURL)){
-                    echo "foto subida con éxito";
+                $fotoURL="";
+                $IMAGENES_USUARIOS = '../fotos/';
+                if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
+                    $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
+                    if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
+                        echo "foto subida con éxito";
+                    }
                 }
-            }
-            $query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";        
-            $a=array($_REQUEST['client_name'], $_REQUEST['client_email'], $fotoURL,$_REQUEST['client_id'] );
-            //$pdo1 = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
-            $consult = $MP_pdo->prepare($query);
-            $a=$consult->execute($a);
-            if (1>$a) {echo "InCorrecto $query";}
-            else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
-            break;  
-
+                $query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";        
+                $a=array($_REQUEST['client_name'], $_REQUEST['client_email'], $fotoURL,$_REQUEST['client_id'] );
+                //$pdo1 = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
+                $consult = $MP_pdo->prepare($query);
+                $a=$consult->execute($a);
+                if (1>$a) {echo "InCorrecto $query";}
+                else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
+                break;  
+    
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
