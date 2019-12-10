@@ -281,7 +281,10 @@ function UjiMotos_MP_my_datos()
             case "actualizar_ujimotos":
 		$cliente=$_REQUEST['client_id'];
 		$foto_vieja = ("SELECT foto_file FROM $table WHERE person_id='$cliente'");
-		unlink($foto_vieja);
+		if (file_exists($foto_vieja)) {
+        		unlink($foto_vieja);
+    		} 
+		
                 $fotoURL="";
                 $IMAGENES_USUARIOS = '../fotos/';
                 if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
