@@ -279,7 +279,7 @@ function UjiMotos_MP_my_datos()
             break; 
 		    
             case "actualizar_ujimotos":
-		$cliente=$_REQUEST['client_id']
+		$cliente=$_REQUEST['client_id'];
 		$foto_vieja = ("SELECT foto_file FROM $table WHERE person_id='$cliente'");
 		unlink($foto_vieja);
                 $fotoURL="";
