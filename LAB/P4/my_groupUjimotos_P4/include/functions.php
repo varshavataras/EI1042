@@ -279,13 +279,16 @@ function UjiMotos_MP_my_datos()
             break; 
 		    
             case "actualizar_ujimotos":
-
+		$cliente=$_REQUEST['client_id']
+		$foto_vieja = ("SELECT foto_file FROM $table WHERE person_id='$cliente'");
+		unlink($foto_vieja);
                 $fotoURL="";
                 $IMAGENES_USUARIOS = '../fotos/';
                 if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
                     $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
                     if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                         echo "foto subida con éxito";
+			
                     }
                 }
                 $query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";        
