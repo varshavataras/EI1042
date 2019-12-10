@@ -49,6 +49,7 @@ function UjiMotos_MP_Update_Form($consulta)
 		 placeholder=""  />
 		<br/>
 	<label for="client_email">Email</label>
+	
 		<br/>
 		<input type="text" name="client_email" class="item_requerid" size="20" maxlength="25" value="<?php print $client_email ?>"
 		 placeholder=""  />
@@ -278,28 +279,34 @@ function UjiMotos_MP_my_datos()
 		
             break; 
 		    
-            case "actualizar_ujimotos":
-		cho "<font face='Verdana' size='2' >Last Uploaded File has been removed from uploads folder<br>back to uploadform agian and upload your file<br>";
-		if (file_exists($bodytag)) {
-        		unlink($bodytag);
-    		} 
-		$xx=$_POST['client_name'];
-		$yy=$_FILES['foto_file']['name']
-			
+      case "actualizar_ujimotos":
                 $fotoURL="";
-		$RUTA_USUARIOS = 'httpdocs/fotos/';
                 $IMAGENES_USUARIOS = '../fotos/';
                 if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
-		    $x=$RUTA_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
-                    $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
-		    if(file_exists('https://ujimotos.com/fotos/'.$xx.'_'.$yy)){
-			    $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_";
-		    }
-                    if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
-                        echo "foto subida con éxito";
-			
-                    }
-                }
+					//Si la foto existe en el directorio, crearemos otra foto con el mismo nombre pero con un número
+					//Por ejemplo, si ya tenemos "usuario_fichero.jpg" y queremos añadir otra foto con exactamente el mismo nombre,
+					//no vamos a sobreescribir la foto existente, sino que la nueva se llamara "usuario_0fichero.jpg".
+       			 	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/fotos/'.$_POST['client_name']."_".$_FILES['foto_file']['name'])){
+						$i=0;
+			   			$fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$i.$_FILES['foto_file']['name'];
+						// Si ya existe "usuario_0fichero.jpg", el 0 se irá hasta encontrar un número no asociado a ninguna foto
+						while(file_exists($_SERVER['DOCUMENT_ROOT'].'/fotos/'.$_POST['client_name']."_".$i.$_FILES['foto_file']['name'])){
+							$i+=1;
+							$fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$i.$_FILES['foto_file']['name'];
+						}
+						if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
+                        	echo "foto subida con éxito";
+						}
+		    		}	
+					//Si la foto no existe en el directorio, se creará con el formato usado normalmente
+					else{
+						$fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
+						if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
+                        	echo "foto subida con éxito";
+                    	}
+					}
+                    
+                
                 $query = "UPDATE $table SET nombre = ?, email= ?,  foto_file = ? WHERE person_id=? ";        
                 $a=array($_REQUEST['client_name'], $_REQUEST['client_email'], $fotoURL,$_REQUEST['client_id'] );
                 //$pdo1 = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD); 
@@ -308,7 +315,7 @@ function UjiMotos_MP_my_datos()
                 if (1>$a) {echo "InCorrecto $query";}
                 else wp_redirect(admin_url( 'admin-post.php?action=my_datos_ujimotos&proceso_ujimotos=listar_ujimotos'));
                 break;  
-    
+				}
         case "registro_ujimotos":
             $MP_user=null; //variable a rellenar cuando usamos modificar con este formulario
             UjiMotos_MP_Register_Form($MP_user,$user_email);
