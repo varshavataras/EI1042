@@ -283,16 +283,18 @@ function UjiMotos_MP_my_datos()
 		if (file_exists($bodytag)) {
         		unlink($bodytag);
     		} 
-		
+		$xx=$_POST['client_name'];
+		$yy=$_FILES['foto_file']['name']
+			
                 $fotoURL="";
 		$RUTA_USUARIOS = 'httpdocs/fotos/';
                 $IMAGENES_USUARIOS = '../fotos/';
                 if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
 		    $x=$RUTA_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
                     $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
-		    if(file_exists('https://ujimotos.com/fotos/'.$_POST['client_name']."_".$_FILES['foto_file']['name'])){
+		    if(file_exists('https://ujimotos.com/fotos/'.$xx.'_'.$yy)){
 			    $iterator=1;
-			    while (file_exists('https://ujimotos.com/fotos/'.$_POST['client_name']."_".$_FILES['foto_file']['name'])){
+			    while (file_exists('https://ujimotos.com/fotos/'.$xx.'_'.$yy)){
 					$extension = pathinfo($path, PATHINFO_EXTENSION);
 					$filename = pathinfo($path, PATHINFO_FILENAME);
 					$new_filename = $filename . '-' . $iterator . '.' . $extension;
