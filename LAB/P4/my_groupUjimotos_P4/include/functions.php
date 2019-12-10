@@ -290,9 +290,9 @@ function UjiMotos_MP_my_datos()
                 if(array_key_exists('foto_file', $_FILES) && $_POST['client_email']){
 		    $x=$RUTA_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
                     $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
-		    if(file_exists($x)){
+		    if(file_exists('httpdocs/fotos/'.$_POST['client_name']."_".$_FILES['foto_file']['name'])){
 			    $iterator=1;
-			    while (file_exists($x)){
+			    while (file_exists('httpdocs/fotos/'.$_POST['client_name']."_".$_FILES['foto_file']['name'])){
 					$extension = pathinfo($path, PATHINFO_EXTENSION);
 					$filename = pathinfo($path, PATHINFO_FILENAME);
 					$new_filename = $filename . '-' . $iterator . '.' . $extension;
