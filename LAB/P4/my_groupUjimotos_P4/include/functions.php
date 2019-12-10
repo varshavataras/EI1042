@@ -279,7 +279,7 @@ function UjiMotos_MP_my_datos()
             break; 
 		    
             case "actualizar_ujimotos":
-		
+		cho "<font face='Verdana' size='2' >Last Uploaded File has been removed from uploads folder<br>back to uploadform agian and upload your file<br>";
 		if (file_exists($bodytag)) {
         		unlink($bodytag);
     		} 
