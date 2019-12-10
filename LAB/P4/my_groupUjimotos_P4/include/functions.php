@@ -293,14 +293,7 @@ function UjiMotos_MP_my_datos()
 		    $x=$RUTA_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
                     $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_".$_FILES['foto_file']['name'];
 		    if(file_exists('https://ujimotos.com/fotos/'.$xx.'_'.$yy)){
-			    $iterator=1;
-			    while (file_exists('https://ujimotos.com/fotos/'.$xx.'_'.$yy)){
-					$extension = pathinfo($path, PATHINFO_EXTENSION);
-					$filename = pathinfo($path, PATHINFO_FILENAME);
-					$new_filename = $filename . '-' . $iterator . '.' . $extension;
-					$fotoURL =$new_filename;
-					$iterator++;
-			    }
+			    $fotoURL = $IMAGENES_USUARIOS.$_POST['client_name']."_";
 		    }
                     if (move_uploaded_file($_FILES['foto_file']['tmp_name'],$fotoURL)){
                         echo "foto subida con éxito";
