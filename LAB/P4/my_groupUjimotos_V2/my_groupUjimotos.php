@@ -4,7 +4,7 @@ Plugin Name: my_group1
 Description: Register group of persons.
 Author URI: lola L
 Author Email: dllido@uji.es
-Version: 1.0
+Version: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
