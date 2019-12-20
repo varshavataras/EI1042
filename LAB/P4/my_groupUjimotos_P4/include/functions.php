@@ -215,17 +215,15 @@ function UjiMotos_MP_my_datos()
     
     if (!(isset($_REQUEST['action'])) or !(isset($_REQUEST['proceso_ujimotos']))) { print("Opciones no correctas $user_email"); exit;}
 
-    get_header();
+    if (!(isset($_REQUEST['partial']))) {
+			get_header();
+	}
     echo '<div class="wrap">';
 
     switch ($_REQUEST['proceso_ujimotos']) {
         
-	if (!(isset($_REQUEST['partial']))) {
-		get_header();
-	if (!(isset($_REQUEST['partial']))) {
-		get_footer();
-		echo "</div>";
-	}	    
+		
+		
 		    
 		    
 	case "modificar_ujimotos":
@@ -424,7 +422,10 @@ function UjiMotos_MP_my_datos()
         remove_action('wp_footer', 'wp_admin_bar_render', 1000);
     }
 
-    get_footer();
+    if (!(isset($_REQUEST['partial']))) {
+			get_footer();
+			echo "</div>";
+		}
     }
 //add_action('admin_post_nopriv_my_datos', 'my_datos');
 //add_action('admin_post_my_datos', 'my_datos'); //no autentificados
