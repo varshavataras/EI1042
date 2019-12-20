@@ -35,44 +35,13 @@ function UjiMotos_MP_Update_Form($consulta)
 	$client_email=$consulta[0]["email"];
 	$client_fotofile=$consulta[0]["foto_file"];
 	$client_mail=$consulta[0]["clienteMail"];
+	include_once(plugin_dir_path(__FILE__) . '../templates/formulario_actualizar.html');
 ?>
 
-<form class="fom_usuario" id="formularioUpdate" action="?action=my_datos_ujimotos&proceso_ujimotos=actualizar_ujimotos" method="POST" enctype="multipart/form-data">
-	<label for="client_id">ID</label>
-		<br/>
-		<input type="text" name="client_id" class="item_requerid" size="20" maxlength="25" value="<?php print $client_id ?>"
-		 placeholder=""  readonly />
-		<br/>
-	<label for="client_name">Nombre</label>
-		<br/>
-		<input type="text" name="client_name" class="item_requerid" size="20" maxlength="25" value="<?php print $client_name ?>"
-		 placeholder=""  />
-		<br/>
-	<label for="client_email">Email</label>
-	
-		<br/>
-		<input type="text" name="client_email" class="item_requerid" size="20" maxlength="25" value="<?php print $client_email ?>"
-		 placeholder=""  />
-		<br/>
-	<label for="client_fotofile">Foto</label>
- <p><img id="img_foto" src="" width="100" height="60"></p>
-    <br/>
-	<input type="file" name="foto_file" id="foto_file" value="<?php print $client_fotofile ?>" required/>
-		<br/>
-	<label for="client_mail">Añadido por</label>
-		<br/>
-		<input type="text" name="client_mail" class="item_requerid" size="20" maxlength="25" value="<?php print $client_mail ?>"
-		 placeholder="" readonly />
-	
-		<br/>
-	<input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.client_fotofile.value)"/> 
-        <input type="reset" value="Deshacer"/>
-</form>
+
 
 <script type="text/javascript" charset="utf-8">
-
 ready();
-
 </script>
 
 
@@ -146,10 +115,6 @@ function comprueba_extension(formulario, archivo) {
     }
 
 } 
-
-
-
-
 
 </script>
 
