@@ -220,6 +220,14 @@ function UjiMotos_MP_my_datos()
 
     switch ($_REQUEST['proceso_ujimotos']) {
         
+	if (!(isset($_REQUEST['partial']))) {
+		get_header();
+	if (!(isset($_REQUEST['partial']))) {
+		get_footer();
+		echo "</div>";
+	}	    
+		    
+		    
 	case "modificar_ujimotos":
 		$person=$_REQUEST['id'];
 		$a=array();
