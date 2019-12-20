@@ -83,48 +83,10 @@ ready();
 
 function UjiMotos_MP_Register_Form($MP_user , $user_email)
 {//formulario registro amigos de $user_email
-
-
-
+	include_once(plugin_dir_path(__FILE__) . '../templates/formulario_registro.html');
     ?>
-    
-    <h1>Gestión de Usuarios </h1>
-    <form class="fom_usuario" id="formularioRegistro"  action="?action=my_datos_ujimotos&proceso_ujimotos=registrar_ujimotos" method="POST" enctype="multipart/form-data" >
-        <label for="clienteMail">Tu correo</label>
-        <br/>
-        <input type="text" name="clienteMail"  size="20" maxlength="25" value="<?php print $user_email?>"
-        readonly required/>
-        <br/>
-        <legend>Datos básicos</legend>
-        <label for="nombre">Nombre</label>
-        <br/>
-        <input type="text" name="userName" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["userName"] ?>"
-        placeholder="Nombre" required/>
-        <br/>
-        <label for="email">Email</label>
-        <br/>
-        <input type="text" name="email" class="item_requerid" size="20" maxlength="25" value="<?php print $MP_user["email"] ?>"
-        placeholder="mail@example.com" required/>
-        <br/>
-        <label for="foto_file">Foto</label>
-	<p> <img id="img_foto" src="" width="100" height="60"></p>
-        <br/>
-        <input type="file" name="foto_file" id="foto_file" value="<?php print $MP_user["foto_file"] ?>"
-         />
-	
-        <p>
-        <input type="submit" value="Enviar" onclick="return comprueba_extension(this.form, this.form.foto_file.value)" >
-        <input type="reset" value="Deshacer">
-		
-
-		
-    </form>
-	
-	
     <script type="text/javascript" charset="utf-8">
-
 	ready();
-
     </script>	
 
 <?php
