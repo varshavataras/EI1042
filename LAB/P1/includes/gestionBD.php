@@ -40,6 +40,16 @@ function consultar($pdo,$table) {
   
 }
 
+
+function consultarJson($pdo,$table) {
+    $query = "SELECT     * FROM       $table "; 
+    $consult = $pdo->prepare($query);
+    $a=$consult->execute(array());
+    if (1>$a)echo "InCorrecto2";
+    return (json_encode($consult->fetchAll(PDO::FETCH_ASSOC),true)); 
+  
+}
+
 function consultarId($pdo,$table,$client_id) {
     $query = "SELECT * FROM  $table WHERE client_id=$client_id"; 
     $consult = $pdo->prepare($query);
