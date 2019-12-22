@@ -332,6 +332,57 @@ function UjiMotos_MP_my_datos()
             print "Opción no correcta";
         
     }
+
+    case "listar_json":
+			
+        //Listado amigos o de todos si se es administrador.
+        $a=array();
+        if (current_user_can('administrator')) {$query = "SELECT   *  FROM       $table ";}
+        else {$campo="clienteMail";
+            $query = "SELECT     * FROM  $table      WHERE $campo =?";
+            $a=array( $user_email);
+
+        } 
+        
+        $consult = $MP_pdo->prepare($query);
+        $a=$consult->execute($a);
+        
+        $json=json_encode($consult->fetchAll(PDO::FETCH_ASSOC),true);
+        $rows=json_decode($json,true);
+
+        if (is_array($rows)) {/* Creamos un listado como una tabla HTML*/
+               
+            echo "<div>","<table><tr>";
+            
+            
+            foreach ( array_keys($rows[0])as $key) {
+                
+                echo "<th>",$key,"</th>";
+            }
+            
+            print "</tr>";
+            
+            foreach ($rows as $row) {
+                print "<tr>";
+                foreach ($row as $key => $val) {
+                    if ($key == 'foto_file'){
+                        echo "<td>",'<img src="'.$val.'" />',"</td>";
+                    }
+                    else{
+                        echo "<td>", $val, "</td>";
+                    }
+                }
+                print "</tr>";
+            }
+            print "</table></div>";
+        }
+        else{echo "No existen valores";}
+        break;
+    default:
+        print "Opción no correcta";
+    
+}
+
     echo "</div>";
     // get_footer ademas del pie de página carga el toolbar de administración de wordpres si es un 
     //usuario autentificado, por ello voy a borrar la acción cuando no es un administrador para que no aparezca.
