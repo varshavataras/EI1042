@@ -40,6 +40,10 @@ switch ($action) {
     case "listar":
         $central = "/listar.php";
         break;
+		
+    case "listarJson": 
+        $central = "/listarJson.php";
+        break;
         
 	case "borrar":
 		$central = "/../partials/deleteForm.php";
